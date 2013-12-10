@@ -45,8 +45,7 @@ class IfStartsWithNode(Node):
 		except VariableDoesNotExist:
 			start_string = None
 
-		if (self.negate and not string.startswith(start_string)) or
-			(not self.negate and string.startswith(start_string)):
+		if (self.negate and not string.startswith(start_string)) or (not self.negate and string.startswith(start_string)):
 			return self.nodelist_true.render(context)
 
 		return self.nodelist_false.render(context)
