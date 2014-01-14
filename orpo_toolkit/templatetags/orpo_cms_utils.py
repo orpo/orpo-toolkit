@@ -1,4 +1,5 @@
 from django import template
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -11,3 +12,7 @@ def get_top_parent_page(page):
 		page = page.parent
 
 	return page
+
+@register.filter
+def highlight(text, word):
+	return mark_safe(text.replace(word, '<span class="highlight">%s</span>' % word))
